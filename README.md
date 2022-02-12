@@ -1,9 +1,24 @@
-# gascntrl-laravel-web
+# [ gascntrl-laravel-web ]
 
-## INITIAL CONFIGURATIONS
-- cd /gascntrl-laravel-web/sistema/
-- composer install
-- php artisan key:generate
+--- 
+#### DOCKER COMPOSE
+* Build or rebuild services:
+    - ```docker-compose build```
+* Create and start containers:
+    - ```docker-compose up -d```
+* Stop and remove containers, networks:
+    - ```docker-compose down```
+* More commands:
+    - ```docker-compose --help```
 
-## no migrations by now
-## - php artisan migrate:fresh --seed
+---
+
+#### INITIAL CONFIGURATIONS
+In your php client:
+- ```cd /var/www/html/gascontrol```
+- ```composer install```
+- ```php artisan key:generate```
+
+_no migrations by now: php artisan migrate:fresh --seed_
+
+---
