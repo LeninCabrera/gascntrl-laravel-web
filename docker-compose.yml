@@ -53,6 +53,16 @@ services:
       - 9000:80
     networks:
       - laravel
+  nodejs:
+    image: node:12.14
+    container_name: nodejs
+    ports:
+      - 3000:3000
+    working_dir: /var/www/html/gascontrol
+    volumes:
+      - ./src/gascontrol:/var/www
+    networks:
+      - laravel
 networks:
   laravel:
     
