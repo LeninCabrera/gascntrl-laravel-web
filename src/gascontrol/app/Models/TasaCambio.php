@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TasaCambio extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'CambioDolar',
+        'CambioEuro'
+    ];
 }
