@@ -19,6 +19,12 @@ In your php client:
 - ```composer install```
 - ```php artisan key:generate```
 
-_no migrations by now: php artisan migrate:fresh --seed_
+---
+
+#### NODE MODULES
+* Node modules with npm:
+    - ```cd /var/www/html/gascontrol```
+    - ```npm install```
+    - ```npm run dev --force```
 
 ---
