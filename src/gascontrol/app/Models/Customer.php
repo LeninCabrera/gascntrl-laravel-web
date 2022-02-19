@@ -6,25 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class Personal extends Model
+class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $table='customer';
+
+    protected $fillable =[
         'idCard',
         'name',
         'lastName',
         'direction',
-        'email',
-        'cellphoneTigo',
         'cellphoneClaro',
-        'job',
-        'salary'
+        'cellphoneTigo',
+        'email'
     ];
 
-    public static function Personals(){
-        return DB::table('personal')
-        ->select('personal.*')
+    public static function Customers(){
+        return DB::table('customer')
+        ->select('customer.*')
         ->get();
     }
+
 }

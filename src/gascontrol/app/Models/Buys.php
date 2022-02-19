@@ -4,12 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
-class Dispensador extends Model
+class Buys extends Model
 {
     use HasFactory;
 
+    protected $table = 'buy';
+
     protected $fillable = [
-        'Descripcion'
+        'id',
+        'datebuys',
+        'marchamos',
+        'invoiceNumber',
+        'turn',
+        'idprovider'
     ];
 }
