@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoCuponsTable extends Migration
+class CreateExchangeRatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateTipoCuponsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_cupons', function (Blueprint $table) {
-            $table->id();
+        Schema::create('exchange_rate', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('dollarChange')->unique();
+            $table->string('euroChange');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateTipoCuponsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_cupons');
+        Schema::dropIfExists('exchange_rates');
     }
 }

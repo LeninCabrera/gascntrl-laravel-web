@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClientesTable extends Migration
+class CreateCouponsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class CreateClientesTable extends Migration
      */
     public function up()
     {
-        Schema::create('clientes', function (Blueprint $table) {
-            $table->id();
+        Schema::create('coupon', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('type')->unique();
+            $table->string('name');
+            $table->string('typeValue');
+            $table->string('value');
+            $table->integer('unitMeasure');
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateClientesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clientes');
+        Schema::dropIfExists('coupons');
     }
 }

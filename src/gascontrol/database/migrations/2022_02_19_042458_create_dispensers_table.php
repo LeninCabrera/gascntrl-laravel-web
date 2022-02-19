@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTarjetasCreditosTable extends Migration
+class CreateDispensersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateTarjetasCreditosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tarjetas_creditos', function (Blueprint $table) {
-            $table->id();
+        Schema::create('dispenser', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('description')->unique();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateTarjetasCreditosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tarjetas_creditos');
+        Schema::dropIfExists('dispensers');
     }
 }
