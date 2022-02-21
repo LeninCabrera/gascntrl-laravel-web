@@ -18,10 +18,11 @@ class CreateTanksTable extends Migration
             $table->string('description');
             $table->string('capacity');
             $table->string('existence');
-            $table->string('iddetailproductbuys');
             $table->timestamps();
 
-            $table->foreign('iddetailproductbuys')->references('id')->on('detailproductbuys');
+            $table->foreign('iddetailproductbuys')->references('id')->on('detail_product_buys');
+            $table->unsignedBigInteger('iddetailproductbuys');
+
         });
     }
 

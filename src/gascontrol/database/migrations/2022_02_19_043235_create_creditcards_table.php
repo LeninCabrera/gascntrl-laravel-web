@@ -16,7 +16,7 @@ class CreateCreditcardsTable extends Migration
         Schema::create('creditcard', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
             $table->string('bankingEntity');
-            $table->img('logo');
+            $table->string('logo');
             $table->timestamps();
         });
     }

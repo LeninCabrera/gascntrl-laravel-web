@@ -17,13 +17,13 @@ class CreateHosesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('descrption');
-            $table->string('iddispenser');
-            $table->string('idtank');
             $table->timestamps();
 
             $table->foreign('iddispenser')->references('id')->on('dispenser');
+            $table->unsignedBigInteger('iddispenser');
 
             $table->foreign('idtank')->references('id')->on('tank');
+            $table->unsignedBigInteger('idtank');
 
         });
     }
