@@ -8,7 +8,7 @@
                 <a href="{{ route('settings.module') }}">
                     <div class="bg-gray-200 flex justify-center items-center">
                         <div id="" class="flex items-center"> 
-                        <x-jet-application-settings-icon />
+                            <x-jet-icon.application-settings />
                         </div>
                     </div>
                 </a>
@@ -19,7 +19,7 @@
                 <a href="{{ route('settings.module') }}">
                     <div class="bg-gray-200 flex justify-center items-center">
                         <div id="" class="flex items-center"> 
-                        <x-jet-application-settings-icon />
+                            <x-jet-icon.application-dispenser />
                         </div>
                     </div>
                 </a>
@@ -30,7 +30,7 @@
                 <a href="{{ route('settings.module') }}">
                     <div class="bg-gray-200 flex justify-center items-center">
                         <div id="" class="flex items-center"> 
-                        <x-jet-application-settings-icon />
+                            <x-jet-icon.application-purchase />
                         </div>
                     </div>
                 </a>
@@ -38,10 +38,10 @@
         </div>
         <div class="mx-auto flex-auto">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <a href="{{ route('settings.module') }}">
+                <a href="{{ route('dispenser.module') }}">
                     <div class="bg-gray-200 flex justify-center items-center">
                         <div id="" class="flex items-center"> 
-                        <x-jet-application-settings-icon />
+                            <x-jet-icon.application-product />
                         </div>
                     </div>
                 </a>

@@ -16,8 +16,18 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerComponent('application-settings-icon');
-        $this->registerComponent('breadcrumbs-nav');
+        // cada componente agregado debe registrarse en este array para ser donados a Blade
+        $components = array(
+                            'icon.application-settings',
+                            'icon.application-product',
+                            'icon.application-dispenser',
+                            'icon.application-purchase', 
+                            'breadcrumbs-nav'
+                        );
+
+        foreach ($components as $component) {
+            $this->registerComponent($component);
+        }
     }
 
     protected function registerComponent(string $component)
