@@ -15,15 +15,15 @@
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <table class="max-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
+                    <x-jet-datatable id="dispensersTable">
+                        <x-slot name="thead">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> N° de Dispensador </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Descripción </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Mangueras </th>
                             </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
+                        </x-slot>
+                        <x-slot name="tbody">
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm font-medium text-gray-900 text-center"> 1 </div>
@@ -46,10 +46,23 @@
                                     </span>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
+                        </x-slot>
+                    </x-jet-datatable>
                 </div>
             </div>
         </div>
     </div>
+
+    <x-slot name="script">
+        <script>
+            $(document).ready(function() {
+        
+                var table = $('#dispensersTable').DataTable({
+                        responsive: true
+                    })
+                    .columns.adjust()
+                    .responsive.recalc();
+            });
+        </script>
+    </x-slot>
 </main>

@@ -18,11 +18,12 @@ class JetstreamServiceProvider extends ServiceProvider
     {
         // cada componente agregado debe registrarse en este array para ser donados a Blade
         $components = array(
-                            'icon.application-settings',
+                            'datatable',
+                            'breadcrumbs-nav',
                             'icon.application-product',
-                            'icon.application-dispenser',
-                            'icon.application-purchase', 
-                            'breadcrumbs-nav'
+                            'icon.application-purchase',
+                            'icon.application-settings',
+                            'icon.application-dispenser'
                         );
 
         foreach ($components as $component) {
