@@ -11,11 +11,20 @@
             <a href="{{ route('dispenser.module') }}" class="text-gray-600 hover:underline"> Dispensadores </a>
         </x-slot>
     </x-jet-breadcrumbs-nav>
-    <div class="flex flex-col">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 align-middle inline-block w-1/2 sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <x-jet-datatable id="dispensersTable">
+
+    <div class="flex justify-center m-4">
+        <div class="w-1/2 flex justify-end px-16">
+            <x-jet-button class="ml-3">
+                {{ __('Añadir nuevo') }}
+            </x-jet-button>
+        </div>
+    </div>
+
+    <div class="flex justify-center">
+        <div class="w-1/2 overflow-hidden">
+            <div class="m-6 mt-0 sm:px-6 lg:px-8">
+                <div class="shadow border-b border-gray-200 sm:rounded-lg bg-scroll bg-contain overflow-auto h-80">
+                    <x-jet-datatable id="dispensersTable" class="min-w-full">
                         <x-slot name="thead">
                             <tr>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> N° de Dispensador </th>
@@ -32,17 +41,14 @@
                                     <x-jet-input type="text" value="DISPENSADOR #1" class="block text-center mt-1 w-full" />
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                        Manguera #1
-                                    </span>
-                                    <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                        Manguera #2
-                                    </span>
-                                    <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                        Manguera #5
-                                    </span>
-                                    <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                        Manguera #7
+                                    <div class="block flex m-4 justify-center">
+                                        <x-jet-label  value="{{ __('no tienes ninguna manguera asignada a este dispensador') }}" />
+                                    </div>
+                                    <!-- <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
+                                        
+                                    </span>-->
+                                    <span class="px-2 mb-4 py-5 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
+                                        +
                                     </span>
                                 </td>
                             </tr>
@@ -58,10 +64,11 @@
             $(document).ready(function() {
         
                 var table = $('#dispensersTable').DataTable({
-                        responsive: true
-                    })
-                    .columns.adjust()
-                    .responsive.recalc();
+                        "responsive": true,
+                        "paging": false,
+                        "searching": false,
+                        "bInfo" : false
+                    });
             });
         </script>
     </x-slot>
