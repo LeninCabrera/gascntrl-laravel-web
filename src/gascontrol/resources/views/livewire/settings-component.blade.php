@@ -17,7 +17,7 @@
                 <a href="{{ route('settings.module') }}">
                     <div class="bg-gray-200 flex justify-center items-center">
                         <div id="" class="flex items-center"> 
-                            <x-jet-application-settings-icon />
+                            <x-jet-icon.application-settings />
                         </div>
                     </div>
                 </a>
