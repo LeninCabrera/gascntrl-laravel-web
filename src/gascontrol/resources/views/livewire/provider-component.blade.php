@@ -108,10 +108,9 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Teléfono </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Celular </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> RUC </th>
-
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> DGI </th>
-
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Giro empresarial </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Acciones </th>
                             </tr>
                         </x-slot>
                         <x-slot name="tbody">
@@ -126,6 +125,9 @@
                                 <td class="px-6 py-4 whitespace-nowrap"> 1234567890 </td>
                                 <td class="px-6 py-4 whitespace-nowrap"> 1234567890</td>
                                 <td class="px-6 py-4 whitespace-nowrap"> Comercialización butano</td>
+                                <td> <a href="" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
+                                     Editar</a><br>
+                                    <a href="" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-red-900 transition duration-300 ease">Eliminar</a></td>
                             </tr>
                         </x-slot>
                     </x-jet-datatable><br>
@@ -148,90 +150,3 @@
         </script>
     </x-slot>
 </main>
-{{--
-    <div class="form-group">
-        <div class="">
-            <br>
-            <label for="rucNumber">RUC</label>
-            <input type="text" class="form-control" id="rucNumber" name="rucNumber" placeholder="Número RUC" required>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <div class="">
-            <br>
-            <label for="rucNumber">RUC</label>
-            <input type="text" class="form-control" id="rucNumber" name="rucNumber" placeholder="Número RUC" required>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <div class="">
-            <br>
-            <label for="rucNumber">RUC</label>
-            <input type="text" class="form-control" id="rucNumber" name="rucNumber" placeholder="Número RUC" required>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <div class="">
-            <br>
-            <label for="dgiRegistration">Número DGI</label>
-            <input type="text" class="form-control" id="dgiRegistration" name="dgiRegistration" placeholder="DGI" required>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <div class="">
-            <br>
-            <label for="address">Dirección</label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="Número RUC" required>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <div class="">
-            <br>
-            <label for="town">Ciudad</label>
-            <input type="text" class="form-control" id="town" name="town" placeholder="Ciudad" required>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <div class="">
-            <br>
-            <label for="conventionalTelephone">Teléfono</label>
-            <input type="text" class="form-control" id="conventionalTelephone" name="conventionalTelephone" placeholder="" required>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <div class="">
-            <br>
-            <label for="cellphone">Celular</label>
-            <input type="text" class="form-control" id="cellphone" name="cellphone" placeholder="" required>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <div class="">
-            <br>
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <div class="">
-            <br>
-            <label for="lineBussines">Giro del negocio</label>
-            <input type="text" class="form-control" id="lineBussines" name="lineBussines" placeholder="" required>
-        </div>
-    </div>
-    <br>
-    <div class="">
-        <x-jet-button type="submit" class="'inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
-            Crear nuevo proveedor
-        </x-jet-button>
-    </div>
-    <br> --}}
