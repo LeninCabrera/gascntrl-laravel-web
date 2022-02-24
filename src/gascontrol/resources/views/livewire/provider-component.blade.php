@@ -70,55 +70,65 @@
                 </div>
             </div>
             <div class="flex flex-col md:flex-row">
-                <div class="w-64 mx-2 font-bold h-6 mt-3 text-gray-800"></div>
-                <div class="flex-1 flex flex-col md:flex-row">
+                <div class="w-64 mx-2 font-bold h-6 mt-3 text-gray-800">
+
+                </div>
+                <div class="flex-6 flex flex-col md:flex-row">
                     <button class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
-            hover:bg-teal-700 hover:text-teal-100
-            bg-teal-100
-            text-teal-700
-            border duration-200 ease-in-out
-            border-teal-600 transition">Submit</button>
+                        hover:bg-teal-700 hover:text-teal-100
+                        bg-teal-100
+                        text-teal-700
+                        border duration-200 ease-in-out
+                        border-teal-600 transition">Guardar
+                    </button>
+                    <br>
+                    <button class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                        hover:bg-teal-700 hover:text-teal-100
+                        bg-teal-100
+                        text-teal-700
+                        border duration-200 ease-in-out
+                        border-teal-600 transition">Cancelar
+                    </button>
                 </div>
             </div>
         </div>
     </div>
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 align-middle inline-block w-1/2 sm:px-6 lg:px-8">
+            <div class="py-2 align-middle d-lg-inline-block  sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                     <x-jet-datatable id="dispensersTable">
                         <x-slot name="thead">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> N° de Dispensador </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Descripción </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Mangueras </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> # </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Empresa </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Vendedor </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Dirección </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Ciudad </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Teléfono </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Celular </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> RUC </th>
+
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> DGI </th>
+
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Giro empresarial </th>
                             </tr>
                         </x-slot>
                         <x-slot name="tbody">
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-medium text-gray-900 text-center"> 1 </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <x-jet-input type="text" value="DISPENSADOR #1" class="block text-center mt-1 w-full" />
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                        Manguera #1
-                                    </span>
-                                    <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                        Manguera #2
-                                    </span>
-                                    <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                        Manguera #5
-                                    </span>
-                                    <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                        Manguera #7
-                                    </span>
-                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> 1 </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> Claro </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> Juan Antonio Perez Ruiz</td>
+                                <td class="px-6 py-4 whitespace-nowrap"> Ciudad Sandino KM 7 carretera vieja a Leon </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> Managua </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> 77224589 </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> 55441155 </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> 1234567890 </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> 1234567890</td>
+                                <td class="px-6 py-4 whitespace-nowrap"> Comercialización butano</td>
                             </tr>
                         </x-slot>
-                    </x-jet-datatable>
+                    </x-jet-datatable><br>
                 </div>
             </div>
         </div>
@@ -134,6 +144,7 @@
                     .columns.adjust()
                     .responsive.recalc();
             });
+
         </script>
     </x-slot>
 </main>
