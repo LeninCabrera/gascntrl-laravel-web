@@ -24,7 +24,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
     return view('home');
 })->name('home');
 
-Route::get('/settings', SettingsComponent::class)->name('settings.module');
-
 Route::get('/provider', ProviderComponent::class)->name('provider.module');
-Route::get('/dispenser', DispenserComponent::class)->name('dispenser.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/settings', SettingsComponent::class)->name('settings.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dispenser', DispenserComponent::class)->name('dispenser.module');

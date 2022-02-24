@@ -1,11 +1,11 @@
 <div>
     <!-- Siempre asigne el id de la etiqueta para la tabla -->
-    <table {{ $attributes }} class="max-w-full divide-y divide-gray-200">
+    <table {{ $attributes }}>
         <thead class="bg-gray-50">
             <!-- Asigne el encabezado para la tabla -->
             {{ $thead ?? '' }}
         </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
+        <tbody>
             <!-- Asigne el body para la tabla -->
             {{ $tbody ?? '' }}
         </tbody>
