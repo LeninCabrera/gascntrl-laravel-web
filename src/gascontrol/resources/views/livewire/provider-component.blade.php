@@ -20,19 +20,19 @@
                 <div class="flex-1 flex flex-col md:flex-row">
                     <div class="w-full flex-1 mx-2">
                         <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <input placeholder="Nombre Compañia" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "> </div>
+                            <x-jet-input id="*companyName" placeholder="Nombre Compañia" class="p-1 px-2 appearance-none outline-none w-full text-gray-800" required></x-jet-input> </div>
                     </div>
                     <div class="w-full flex-1 mx-2">
                         <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <input placeholder="Vendedor" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "> </div>
+                            <x-jet-input id="*seller" placeholder="Vendedor" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input> </div>
                     </div>
                     <div class="w-full flex-1 mx-2">
                         <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <input placeholder="Dirección" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "> </div>
+                            <x-jet-input id="address" placeholder="Dirección" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input> </div>
                     </div>
                     <div class="w-full flex-1 mx-2">
                         <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <input placeholder="Ciudad" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "> </div>
+                            <x-jet-input id="town" placeholder="Ciudad" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input> </div>
                     </div>
                 </div>
             </div>
@@ -43,11 +43,11 @@
                     <div class="flex flex-col md:flex-row">
                         <div class="w-full flex-1 mx-2">
                             <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                                <input placeholder="Teléfono convencional" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "> </div>
+                                <x-jet-input id="conventionalTelephone" placeholder="Teléfono convencional" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input> </div>
                         </div>
                         <div class="w-full flex-1 mx-2">
                             <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                                <input placeholder="Teléfono celular" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "> </div>
+                                <x-jet-input id="cellphone" placeholder="Teléfono celular" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input> </div>
                         </div>
                     </div>
                 </div>
@@ -57,15 +57,18 @@
                 <div class="flex-1 flex flex-col md:flex-row">
                     <div class="w-full flex-1 mx-2">
                         <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <input placeholder="Numero RUC" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "> </div>
+                            <x-jet-input for="rucNumber" id="rucNumber" value="" class="p-1 px-2 appearance-none outline-none w-full text-gray-800" placeholder="Número RUC"></x-jet-input>
+                        </div>
                     </div>
                     <div class="w-full flex-1 mx-2">
                         <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <input placeholder="Registro DGI" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "> </div>
+                            <x-jet-input id="dgiRegistration" for="dgiRegistration" placeholder="Registro DGI" class="p-1 px-2 appearance-none outline-none w-full text-gray-800"></x-jet-input>
+                        </div>
                     </div>
                     <div class="w-full flex-1 mx-2">
                         <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <input placeholder="Giro de la empresa" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "> </div>
+                            <x-jet-input id="lineBussiness" placeholder="Giro de la empresa" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,21 +77,21 @@
 
                 </div>
                 <div class="flex-6 flex flex-col md:flex-row">
-                    <button class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                    <x-jet-button {{('Saved')}} class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
                         hover:bg-teal-700 hover:text-teal-100
                         bg-teal-100
                         text-teal-700
                         border duration-200 ease-in-out
                         border-teal-600 transition">Guardar
-                    </button>
+                    </x-jet-button>
                     <br>
-                    <button class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                    <x-jet-button class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
                         hover:bg-teal-700 hover:text-teal-100
                         bg-teal-100
                         text-teal-700
                         border duration-200 ease-in-out
                         border-teal-600 transition">Cancelar
-                    </button>
+                    </x-jet-button>
                 </div>
             </div>
         </div>
@@ -114,21 +117,23 @@
                             </tr>
                         </x-slot>
                         <x-slot name="tbody">
+                            @foreach($providers as $provider)
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap"> 1 </td>
-                                <td class="px-6 py-4 whitespace-nowrap"> Claro </td>
-                                <td class="px-6 py-4 whitespace-nowrap"> Juan Antonio Perez Ruiz</td>
-                                <td class="px-6 py-4 whitespace-nowrap"> Ciudad Sandino KM 7 carretera vieja a Leon </td>
-                                <td class="px-6 py-4 whitespace-nowrap"> Managua </td>
-                                <td class="px-6 py-4 whitespace-nowrap"> 77224589 </td>
-                                <td class="px-6 py-4 whitespace-nowrap"> 55441155 </td>
-                                <td class="px-6 py-4 whitespace-nowrap"> 1234567890 </td>
-                                <td class="px-6 py-4 whitespace-nowrap"> 1234567890</td>
-                                <td class="px-6 py-4 whitespace-nowrap"> Comercialización butano</td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->id }} </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->companyName }} </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->seller }} </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->address }} </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->town }} </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->conventionalTelephone }} </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->cellphone }} </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->rucNumber }} </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->dgiRegistration }} </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->lineBussiness }} </td>
                                 <td> <a href="" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                     Editar</a><br>
+                                        Editar</a><br>
                                     <a href="" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-red-900 transition duration-300 ease">Eliminar</a></td>
                             </tr>
+                            @endforeach
                         </x-slot>
                     </x-jet-datatable><br>
                 </div>
