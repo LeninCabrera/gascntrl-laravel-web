@@ -14,7 +14,7 @@
 
     <div class="flex justify-center m-4">
         <div class="w-1/2 flex justify-end px-16">
-            <x-jet-button class="ml-3">
+            <x-jet-button class="ml-3" wire:click="saveNewDispenser">
                 {{ __('Añadir nuevo') }}
             </x-jet-button>
         </div>
@@ -33,12 +33,13 @@
                             </tr>
                         </x-slot>
                         <x-slot name="tbody">
+                            @foreach ($dispensers as $dispenser)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-medium text-gray-900 text-center"> 1 </div>
+                                    <div class="text-sm font-medium text-gray-900 text-center"> {{ $dispenser->id }} </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <x-jet-input type="text" value="DISPENSADOR #1" class="block text-center mt-1 w-full" />
+                                    <x-jet-input type="text" value="{{ $dispenser->description }}" class="block text-center mt-1 w-full" />
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="block flex m-4 justify-center">
@@ -52,6 +53,7 @@
                                     </span>
                                 </td>
                             </tr>
+                            @endforeach
                         </x-slot>
                     </x-jet-datatable>
                 </div>

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SettingsComponent;
-use App\Http\Livewire\DispenserComponent;
+use App\Http\Livewire\Dispenser\DispenserComponent;
 
 /*
 |--------------------------------------------------------------------------
