@@ -21,6 +21,7 @@ class JetstreamServiceProvider extends ServiceProvider
                             'datatable',
                             'breadcrumbs-nav',
                             'icon.application-product',
+                            'icon.application-arching',
                             'icon.application-purchase',
                             'icon.application-settings',
                             'icon.application-dispenser'
