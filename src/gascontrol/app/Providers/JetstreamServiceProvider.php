@@ -23,6 +23,7 @@ class JetstreamServiceProvider extends ServiceProvider
                             'icon.application-product',
                             'icon.application-arching',
                             'icon.application-employee',
+                            'icon.application-providers',
                             'icon.application-purchase',
                             'icon.application-settings',
                             'icon.application-dispenser'
