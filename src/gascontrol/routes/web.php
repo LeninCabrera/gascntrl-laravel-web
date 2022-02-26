@@ -2,8 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SettingsComponent;
+<<<<<<< HEAD
 use App\Http\Livewire\Dispenser\DispenserComponent;
 use App\Http\Livewire\ProviderComponent;
+=======
+use App\Http\Livewire\ProviderComponent;
+use App\Http\Livewire\Dispenser\DispenserComponent;
+>>>>>>> feature/ui-basics-modules
 
 /*
 |--------------------------------------------------------------------------
