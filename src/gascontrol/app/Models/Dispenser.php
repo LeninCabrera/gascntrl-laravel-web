@@ -15,4 +15,10 @@ class Dispenser extends Model
         'id',
         'description',
     ];
+
+
+    public function hoses()
+    {
+        return $this->hasMany(Hose::class, 'dispenser_id');
+    }
 }

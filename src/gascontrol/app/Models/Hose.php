@@ -13,9 +13,8 @@ class Hose extends Model
 
     protected $fillable = [
         'id',
-        'name',
         'description',
-        'idDispenser',
-        'idTank'
+        'dispenser_id',
+        'tank_id'
     ];
 }

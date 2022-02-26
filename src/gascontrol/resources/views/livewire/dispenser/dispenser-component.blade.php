@@ -19,47 +19,67 @@
             </x-jet-button>
         </div>
     </div>
-
     <div class="flex justify-center">
-        <div class="w-1/2 overflow-hidden">
+        <div class="shadow-2xl rounded-2xl lg:w-1/2 sm:w-screen overflow-hidden mx-10">
             <div class="m-6 mt-0 sm:px-6 lg:px-8">
-                <div class="shadow border-b border-gray-200 sm:rounded-lg bg-scroll bg-contain overflow-auto h-80">
-                    <x-jet-datatable id="dispensersTable" class="min-w-full">
-                        <x-slot name="thead">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> N° de Dispensador </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Descripción </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Mangueras </th>
-                            </tr>
-                        </x-slot>
-                        <x-slot name="tbody">
-                            @foreach ($dispensers as $dispenser)
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm font-medium text-gray-900 text-center"> {{ $dispenser->id }} </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <x-jet-input type="text" value="{{ $dispenser->description }}" class="block text-center mt-1 w-full" />
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="block flex m-4 justify-center">
-                                        <x-jet-label  value="{{ __('no tienes ninguna manguera asignada a este dispensador') }}" />
-                                    </div>
-                                    <!-- <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                        
-                                    </span>-->
-                                    <span class="px-2 mb-4 py-5 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
+                <div class="bg-scroll bg-contain overflow-auto h-80">
+                    @foreach ($dispensers as $dispenser)
+                    <ul class="block w-11/12 my-4 mx-auto" x-data="{selected:null}">
+                        <li class="flex align-center flex-col">
+                            <div 
+                                @click="selected !== 0 ? selected = 0 : selected = null"
+                                wire:click="getHosesForDispenserId({{ $dispenser->id }})"
+                                class="cursor-pointer px-5 py-3 bg-white text-indigo-500 font-bold text-centerflex items-center justify-center hover:opacity-75 hover:shadow rounded-2xl uppercase">
+                                <div class="bg-indigo-100 text-indigo-400 w-8 h-8 md:w-10 md:h-10 rounded-md flex items-center justify-center font-bold text-lg font-display">
+                                    <span x-text="{{ $dispenser->id }}"></span>
+                                </div>
+                                {{ $dispenser->description }}
+                            </div>
+                            <div x-show="selected == 0" class="border-4 border-violet-300 rounded-xl py-12 px-2 mt-4 mx-6 bg-scroll bg-contain overflow-auto">
+                                @if (count($hoses) == 0)
+                                    No hay mangueras asignadas a este dispensador.
+                                    <span wire:click="togleModal" class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
                                         +
                                     </span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </x-slot>
-                    </x-jet-datatable>
+                                @else
+                                    @foreach ($hoses as $hose)
+                                    <span class="px-2 mb-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
+                                        {{ $hose->description }}
+                                    </span>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </li>
+                    </ul>
+                    @endforeach 
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- TODO: This modal dialog will be moved to another file after -->
+    <x-jet-dialog-modal wire:model="showHosesModal">
+        <x-slot name="title">
+            {{ __('Agregar manguera') }}
+        </x-slot>
+    
+        <x-slot name="content">
+            <div class="mt-4">
+                
+            </div>
+        </x-slot>
+    
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$toggle('showHosesModal')">
+                {{ __('Cancelar') }}
+            </x-jet-secondary-button>
+    
+            <x-jet-button class="ml-3"
+                        wire:loading.attr="disabled">
+                {{ __('Agregar') }}
+            </x-jet-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 
     <x-slot name="script">
         <script>

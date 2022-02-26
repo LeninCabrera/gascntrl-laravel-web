@@ -7,7 +7,10 @@ use App\Models\Dispenser;
 
 class DispenserComponent extends Component
 {
+    public $showHosesModal = false;
     public $description = 'DISPENSADOR #';
+    public $dispenserId;
+    public $hoses = [];
 
     public function render()
     {
@@ -32,5 +35,21 @@ class DispenserComponent extends Component
         $dispenser = new Dispenser;
         $dispenser->description = $description;
         $dispenser->save();
+    }
+
+    public function saveNewHoseForDispenser($dispenserId)
+    {
+        $hose = new Hose;
+    }
+
+    public function getHosesForDispenserId($dispenserId)
+    {
+        $this->dispenserId = $dispenserId;
+        $this->hoses = Dispenser::find($dispenserId)->hoses()->get();
+    }
+
+    public function togleModal()
+    {
+        $this->showHosesModal = !$this->showHosesModal;
     }
 }

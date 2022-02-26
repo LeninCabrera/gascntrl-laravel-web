@@ -18,11 +18,11 @@ class CreateHosesTable extends Migration
             $table->string('descrption');
             $table->timestamps();
 
-            $table->foreign('idDispenser')->references('id')->on('dispensers');
-            $table->unsignedBigInteger('idDispenser');
+            $table->foreign('dispenser_id')->references('id')->on('dispensers');
+            $table->unsignedBigInteger('dispenser_id');
 
-            $table->foreign('idTank')->references('id')->on('tanks');
-            $table->unsignedBigInteger('idTank');
+            $table->foreign('tank_id')->references('id')->on('tanks');
+            $table->unsignedBigInteger('tank_id');
         });
     }
 

@@ -16,6 +16,6 @@ class Tank extends Model
         'description',
         'capacity',
         'existence',
-        'idFuel',
+        'fuel_id',
     ];
 }
