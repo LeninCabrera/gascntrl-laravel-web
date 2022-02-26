@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SettingsComponent;
+use App\Http\Livewire\ProviderComponent;
 use App\Http\Livewire\Dispenser\DispenserComponent;
 
 /*
@@ -25,3 +26,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/settings', SettingsComponent::class)->name('settings.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dispenser', DispenserComponent::class)->name('dispenser.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/provider', ProviderComponent::class)->name('provider.module');
