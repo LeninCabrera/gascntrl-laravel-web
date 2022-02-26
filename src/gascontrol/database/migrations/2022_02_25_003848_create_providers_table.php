@@ -16,14 +16,14 @@ class CreateProvidersTable extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('companyName');
-            $table->string('seller');
-            $table->string('address');
-            $table->string('town');
-            $table->integer('conventionalTelephone');
-            $table->integer('cellphone');
-            $table->integer('rucNumber');
-            $table->string('dgiRegistration');
-            $table->string('lineBussiness');
+            $table->string('seller')->nullable();
+            $table->string('address')->nullable();
+            $table->string('town')->nullable();
+            $table->integer('conventionalTelephone')->nullable();
+            $table->integer('cellphone')->nullable();
+            $table->integer('rucNumber')->nullable();
+            $table->string('dgiRegistration')->nullable();
+            $table->string('lineBussiness')->nullable();
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@ class Provider extends Model
     use HasFactory;
 
     protected $fillable = [
-        'companyName', 'seller', 'address', 'town', 'conventionalTlephone',
+        'companyName', 'seller', 'address', 'town', 'conventionalTelephone',
         'cellphone', 'rucNumber', 'dgiRegistration', 'lineBussiness'
     ];
 }

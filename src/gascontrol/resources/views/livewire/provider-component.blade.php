@@ -15,85 +15,93 @@
     <!-- component -->
     <div class="p-5">
         <div class="mt-2">
-            <div class="flex flex-col md:flex-row border-b border-gray-200 pb-4 mb-4">
-                <div class="w-64 font-bold h-6 mx-2 mt-3 text-gray-800">Datos generales</div>
-                <div class="flex-1 flex flex-col md:flex-row">
-                    <div class="w-full flex-1 mx-2">
-                        <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <x-jet-input id="*companyName" placeholder="Nombre Compañia" class="p-1 px-2 appearance-none outline-none w-full text-gray-800" required></x-jet-input> </div>
-                    </div>
-                    <div class="w-full flex-1 mx-2">
-                        <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <x-jet-input id="*seller" placeholder="Vendedor" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input> </div>
-                    </div>
-                    <div class="w-full flex-1 mx-2">
-                        <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <x-jet-input id="address" placeholder="Dirección" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input> </div>
-                    </div>
-                    <div class="w-full flex-1 mx-2">
-                        <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <x-jet-input id="town" placeholder="Ciudad" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row border-b border-gray-200 pb-4 mb-4">
-                <div class="w-64 font-bold h-6 mx-2 mt-3 text-gray-800">Contacto
-                </div>
-                <div class="flex-1">
-                    <div class="flex flex-col md:flex-row">
+            <form>
+                <div class="flex flex-col md:flex-row border-b border-gray-200 pb-4 mb-4">
+                    <div class="w-64 font-bold h-6 mx-2 mt-3 text-gray-800">Datos generales</div>
+                    <div class="flex-1 flex flex-col md:flex-row">
                         <div class="w-full flex-1 mx-2">
                             <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                                <x-jet-input id="conventionalTelephone" placeholder="Teléfono convencional" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input> </div>
+                                <x-jet-input wire:model="companyName" id="companyName" name="companyName" placeholder="*Nombre Compañia" class="p-1 px-2 appearance-none outline-none w-full text-gray-800" required></x-jet-input>
+                            </div>
                         </div>
                         <div class="w-full flex-1 mx-2">
                             <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                                <x-jet-input id="cellphone" placeholder="Teléfono celular" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input> </div>
+                                <x-jet-input wire:model="seller" id="seller" name="seller" placeholder="Vendedor" class="p-1 px-2 appearance-none outline-none w-full text-gray-800"></x-jet-input>
+                            </div>
+                        </div>
+                        <div class="w-full flex-1 mx-2">
+                            <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                <x-jet-input wire:model="address" id="address" name="address" placeholder="Dirección" class="p-1 px-2 appearance-none outline-none w-full text-gray-800"></x-jet-input>
+                            </div>
+                        </div>
+                        <div class="w-full flex-1 mx-2">
+                            <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                <x-jet-input wire:model="town" id="town" name="town" placeholder="Ciudad" class="p-1 px-2 appearance-none outline-none w-full text-gray-800"></x-jet-input>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="flex flex-col md:flex-row border-b border-gray-200 pb-4 mb-4">
-                <div class="w-64 font-bold h-6 mx-2 mt-3 text-gray-800">Datos legales</div>
-                <div class="flex-1 flex flex-col md:flex-row">
-                    <div class="w-full flex-1 mx-2">
-                        <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <x-jet-input for="rucNumber" id="rucNumber" value="" class="p-1 px-2 appearance-none outline-none w-full text-gray-800" placeholder="Número RUC"></x-jet-input>
-                        </div>
+                <div class="flex flex-col md:flex-row border-b border-gray-200 pb-4 mb-4">
+                    <div class="w-64 font-bold h-6 mx-2 mt-3 text-gray-800">Contacto
                     </div>
-                    <div class="w-full flex-1 mx-2">
-                        <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <x-jet-input id="dgiRegistration" for="dgiRegistration" placeholder="Registro DGI" class="p-1 px-2 appearance-none outline-none w-full text-gray-800"></x-jet-input>
-                        </div>
-                    </div>
-                    <div class="w-full flex-1 mx-2">
-                        <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                            <x-jet-input id="lineBussiness" placeholder="Giro de la empresa" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row">
+                            <div class="w-full flex-1 mx-2">
+                                <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                    <x-jet-input wire:model="conventionalTelephone" id="conventionalTelephone" name="conventionalTelephone" placeholder="Teléfono convencional" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input>
+                                </div>
+                            </div>
+                            <div class="w-full flex-1 mx-2">
+                                <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                    <x-jet-input wire:model="cellphone" id="cellphone" name="cellphone" placeholder="Teléfono celular" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="flex flex-col md:flex-row">
-                <div class="w-64 mx-2 font-bold h-6 mt-3 text-gray-800">
+                <div class="flex flex-col md:flex-row border-b border-gray-200 pb-4 mb-4">
+                    <div class="w-64 font-bold h-6 mx-2 mt-3 text-gray-800">Datos legales</div>
+                    <div class="flex-1 flex flex-col md:flex-row">
+                        <div class="w-full flex-1 mx-2">
+                            <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                <x-jet-input wire:model="rucNumber" for="rucNumber" name="rucNumber" id="rucNumber" class="p-1 px-2 appearance-none outline-none w-full text-gray-800" placeholder="Número RUC"></x-jet-input>
+                            </div>
+                        </div>
+                        <div class="w-full flex-1 mx-2">
+                            <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                <x-jet-input wire:model="dgiRegistration" id="dgiRegistration" name="dgiRegistration" for="dgiRegistration" placeholder="Registro DGI" class="p-1 px-2 appearance-none outline-none w-full text-gray-800"></x-jet-input>
+                            </div>
+                        </div>
+                        <div class="w-full flex-1 mx-2">
+                            <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                <x-jet-input wire:model="lineBussiness" id="lineBussiness" name="lineBussiness" placeholder="Giro de la empresa" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 "></x-jet-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row">
+                    <div class="w-64 mx-2 font-bold h-6 mt-3 text-gray-800">
 
-                </div>
-                <div class="flex-6 flex flex-col md:flex-row">
-                    <x-jet-button {{('Saved')}} class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                    </div>
+                    <div class="flex-6 flex flex-col md:flex-row">
+                        <x-jet-button wire:click="saved()" class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
                         hover:bg-teal-700 hover:text-teal-100
                         bg-teal-100
                         text-teal-700
                         border duration-200 ease-in-out
                         border-teal-600 transition">Guardar
-                    </x-jet-button>
-                    <br>
-                    <x-jet-button class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                        </x-jet-button>
+                        <br>
+                        <x-jet-button wire:click="cleaninput()" class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
                         hover:bg-teal-700 hover:text-teal-100
                         bg-teal-100
                         text-teal-700
                         border duration-200 ease-in-out
                         border-teal-600 transition">Cancelar
-                    </x-jet-button>
+                        </x-jet-button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="flex flex-col">
@@ -129,11 +137,16 @@
                                 <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->rucNumber }} </td>
                                 <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->dgiRegistration }} </td>
                                 <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->lineBussiness }} </td>
-                                <td> <a href="" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
-                                        Editar</a><br>
-                                    <a href="" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-red-900 transition duration-300 ease">Eliminar</a></td>
+                                <td>
+                                    <x-jet-button wire:click="edit({{ $provider->id }})" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
+                                        Editar</x-jet-button><br>
+                                    <x-jet-button wire:click="delete({{ $provider->id }})" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-red-900 transition duration-300 ease">
+                                        Eliminar</x-jet-button>
                             </tr>
+
                             @endforeach
+
+
                         </x-slot>
                     </x-jet-datatable><br>
                 </div>
