@@ -37,8 +37,8 @@ class ProviderComponent extends Component
         $this->lineBussiness = "";
     }
 
-    public function saved(){
-        Provider::updateorCreate(
+    public function saveNewProvider(){
+        Provider::Create(
         [
             'companyName' => $this->companyName,
             'seller' => $this->seller,
@@ -52,8 +52,8 @@ class ProviderComponent extends Component
         ]);
     }
 
-    public function edit($id){
-        $providers = Provider::findorFail($id);
+    public function updateProvider($providerId){
+        $providers = Provider::findorFail($providerId);
         $this->companyName = $companyName;
         $this->seller = $seller;
         $this->address = $address;
@@ -63,6 +63,5 @@ class ProviderComponent extends Component
         $this->rucNumber = $rucNumber;
         $this->dgiRegistration = $dgiRegistration;
         $this->lineBussiness = $lineBussiness;
-        $this->openModal();
     }
 }
