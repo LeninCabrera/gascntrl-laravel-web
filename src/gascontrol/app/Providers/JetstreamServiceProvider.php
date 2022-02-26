@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Actions\Jetstream\DeleteUser;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\Blade;
 
 class JetstreamServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,24 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // cada componente agregado debe registrarse en este array para ser donados a Blade
+        $components = array(
+                            'datatable',
+                            'breadcrumbs-nav',
+                            'icon.application-product',
+                            'icon.application-purchase',
+                            'icon.application-settings',
+                            'icon.application-dispenser'
+                        );
+
+        foreach ($components as $component) {
+            $this->registerComponent($component);
+        }
+    }
+
+    protected function registerComponent(string $component)
+    {
+        Blade::component('jetstream::components.'.$component, 'jet-'.$component);
     }
 
     /**
