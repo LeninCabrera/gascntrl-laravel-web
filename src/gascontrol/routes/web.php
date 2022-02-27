@@ -2,13 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SettingsComponent;
-<<<<<<< HEAD
 use App\Http\Livewire\Dispenser\DispenserComponent;
 use App\Http\Livewire\ProviderComponent;
-=======
-use App\Http\Livewire\ProviderComponent;
-use App\Http\Livewire\Dispenser\DispenserComponent;
->>>>>>> feature/ui-basics-modules
+use App\Http\Livewire\PersonalComponent;
+use App\Http\Livewire\CustomerComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +29,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/settings', SettingsComponent::class)->name('settings.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dispenser', DispenserComponent::class)->name('dispenser.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/provider', ProviderComponent::class)->name('provider.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/personal', PersonalComponent::class)->name('personal.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/customer', CustomerComponent::class)->name('customer.module');

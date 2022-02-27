@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Personal extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'id_Card', 'name', 'last_Name','address',
+        'cellphone', 'email', 'job_Position', 'salary'
+    ];
 }

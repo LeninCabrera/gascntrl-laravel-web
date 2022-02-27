@@ -17,6 +17,30 @@
                 </div>
             </div>
 
+            <div class="mt-10">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <a href="{{ route('personal.module') }}">
+                        <div class="bg-gray-200 flex justify-center items-center">
+                            <div id="" class="flex items-center">
+                                <x-jet-icon.application-employee class="ease-in-out transform hover:scale-75 transition duration-500" />
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <a href="{{ route('customer.module') }}">
+                        <div class="bg-gray-200 flex justify-center items-center">
+                            <div id="" class="flex items-center">
+                                <x-jet-icon.application-purchase class="ease-in-out transform hover:scale-75 transition duration-500" />
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
             <div class="mt-4">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <a href="{{ route('settings.module') }}">
