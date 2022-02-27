@@ -20,6 +20,7 @@ class JetstreamServiceProvider extends ServiceProvider
         $components = array(
                             'datatable',
                             'breadcrumbs-nav',
+                            'icon.application-fuel',
                             'icon.application-product',
                             'icon.application-arching',
                             'icon.application-employee',

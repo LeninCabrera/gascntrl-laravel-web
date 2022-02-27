@@ -7,10 +7,11 @@ use App\Models\Dispenser;
 
 class DispenserComponent extends Component
 {
+    // Public Properties
+    public $hoses = [];
+    public $dispenserId;
     public $showHosesModal = false;
     public $description = 'DISPENSADOR #';
-    public $dispenserId;
-    public $hoses = [];
 
     public function render()
     {
