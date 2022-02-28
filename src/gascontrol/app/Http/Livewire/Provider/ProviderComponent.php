@@ -29,22 +29,32 @@ class ProviderComponent extends Component implements ComponentContractInterface
 
     // Public functions
 
-    public function cleanInput()
+    public function resetFilters()
     {
-        $this->town = "";
-        $this->seller = "";
-        $this->address = "";
-        $this->cellphone = "";
-        $this->rucNumber = "";
-        $this->companyName = "";
-        $this->lineBussiness = "";
-        $this->dgiRegistration = "";
-        $this->conventionalTelephone = "";
+        $properties = [
+            "town", 
+            "seller", 
+            "address", 
+            "cellphone", 
+            "rucNumber", 
+            "companyName", 
+            "lineBussiness",
+            "dgiRegistration",
+            "conventionalTelephone"
+        ];
+        foreach ($properties as $property) {
+            $this->reset($property);
+        }
     }
 
     public function saveNewProvider()
     {
+        $this->validate([
+            'companyName' => 'required',
+        ]);
+
         $this->saveModelObject();
+        $this->resetFilters();
     }
 
     public function updateProvider($providerId)
