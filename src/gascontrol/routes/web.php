@@ -7,6 +7,8 @@ use App\Http\Livewire\Tank\TankComponent;
 use App\Http\Livewire\HomeModuleComponent;
 use App\Http\Livewire\Provider\ProviderComponent;
 use App\Http\Livewire\Dispenser\DispenserComponent;
+use App\Http\Livewire\PersonalComponent;
+use App\Http\Livewire\CustomerComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +32,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/tank', TankComponent::cla
 Route::middleware(['auth:sanctum', 'verified'])->get('/fuel', FuelComponent::class)->name('fuel.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/settings', SettingsComponent::class)->name('settings.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/provider', ProviderComponent::class)->name('provider.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/personal', PersonalComponent::class)->name('personal.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/customer', CustomerComponent::class)->name('customer.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dispenser', DispenserComponent::class)->name('dispenser.module');
