@@ -1,4 +1,4 @@
-<x-app-layout>
+<div>
     <!-- Breadcrumbs nav -->
     <x-jet-breadcrumbs-nav>
     </x-jet-breadcrumbs-nav>
@@ -91,7 +91,7 @@
 
           <div class="mt-10">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <a href="{{ route('dispenser.module') }}">
+                <a href="{{ route('fuel.module') }}">
                   <div class="bg-gray-200 flex justify-center items-center">
                       <div id="" class="flex items-center"> 
                         <x-jet-icon.application-fuel class="ease-in-out transform hover:scale-75 transition duration-500" />
@@ -100,6 +100,7 @@
                 </a>
             </div>
           </div>
+
         </div>
-      </div>
-</x-app-layout>
+    </div>
+</div>
