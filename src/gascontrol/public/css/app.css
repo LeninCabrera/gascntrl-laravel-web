@@ -2430,11 +2430,11 @@ select {
     margin-right: -2rem;
   }
 
-  .lg\:w-3\/6 {
+  .lg\:w-1\/2 {
     width: 50%;
   }
 
-  .lg\:w-1\/2 {
+  .lg\:w-3\/6 {
     width: 50%;
   }
 
