@@ -79,7 +79,7 @@
 
           <div class="mt-10">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <a href="{{ route('dispenser.module') }}">
+                <a href="{{ route('tank.module') }}">
                   <div class="bg-gray-200 flex justify-center items-center">
                       <div id="" class="flex items-center"> 
                         <x-jet-icon.application-product class="ease-in-out transform hover:scale-75 transition duration-500" />

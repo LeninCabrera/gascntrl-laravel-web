@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SettingsComponent;
 use App\Http\Livewire\Fuel\FuelComponent;
+use App\Http\Livewire\Tank\TankComponent;
 use App\Http\Livewire\HomeModuleComponent;
 use App\Http\Livewire\Provider\ProviderComponent;
 use App\Http\Livewire\Dispenser\DispenserComponent;
@@ -25,7 +26,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/home', HomeModuleComponent::class)->name('home');
 
 // Modules routes
-Route::middleware(['auth:sanctum', 'verified'])->get('/tank', ProviderComponent::class)->name('tank.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/tank', TankComponent::class)->name('tank.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/fuel', FuelComponent::class)->name('fuel.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/settings', SettingsComponent::class)->name('settings.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/provider', ProviderComponent::class)->name('provider.module');
