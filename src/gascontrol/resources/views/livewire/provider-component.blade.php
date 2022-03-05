@@ -126,7 +126,7 @@
                         <x-slot name="tbody">
                             @foreach($providers as $provider)
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->id }} </td>
+                                <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->idCard }} </td>
                                 <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->companyName }} </td>
                                 <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->seller }} </td>
                                 <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->address }} </td>

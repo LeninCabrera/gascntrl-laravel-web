@@ -2,8 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SettingsComponent;
-use App\Http\Livewire\ProviderComponent;
-use App\Http\Livewire\DispenserComponent;
+use App\Http\Livewire\Fuel\FuelComponent;
+use App\Http\Livewire\Tank\TankComponent;
+use App\Http\Livewire\HomeModuleComponent;
+use App\Http\Livewire\Provider\ProviderComponent;
+use App\Http\Livewire\Dispenser\DispenserComponent;
+use App\Http\Livewire\PersonalComponent;
+use App\Http\Livewire\CustomerComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +25,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
-    return view('home');
-})->name('home');
+Route::middleware(['auth:sanctum', 'verified'])->get('/home', HomeModuleComponent::class)->name('home');
 
+// Modules routes
+Route::middleware(['auth:sanctum', 'verified'])->get('/tank', TankComponent::class)->name('tank.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/fuel', FuelComponent::class)->name('fuel.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/settings', SettingsComponent::class)->name('settings.module');
-Route::middleware(['auth:sanctum', 'verified'])->get('/dispenser', DispenserComponent::class)->name('dispenser.module');
 Route::middleware(['auth:sanctum', 'verified'])->get('/provider', ProviderComponent::class)->name('provider.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/personal', PersonalComponent::class)->name('personal.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/customer', CustomerComponent::class)->name('customer.module');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dispenser', DispenserComponent::class)->name('dispenser.module');
