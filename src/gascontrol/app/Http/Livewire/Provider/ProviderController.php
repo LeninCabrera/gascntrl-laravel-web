@@ -13,7 +13,24 @@ trait ProviderController {
 
     public function resetFilters()
     {
-        $this->reset($this->provider);
+        if (!empty($provider)) {
+            $this->provider = null;
+        }
+    }
+
+    public function setProvider($providerId)
+    {
+        $providerSelected = $this->findProvider($providerId);
+        
+        $this->provider['town']                     = $providerSelected->town;
+        $this->provider['seller']                   = $providerSelected->seller;
+        $this->provider['address']                  = $providerSelected->address;
+        $this->provider['cellphone']                = $providerSelected->cellphone;
+        $this->provider['rucNumber']                = $providerSelected->rucNumber;
+        $this->provider['companyName']              = $providerSelected->companyName;
+        $this->provider['lineBussiness']            = $providerSelected->lineBussiness;
+        $this->provider['dgiRegistration']          = $providerSelected->dgiRegistration;
+        $this->provider['conventionalTelephone']    = $providerSelected->conventionalTelephone;
     }
 
     // Protected functions
@@ -25,42 +42,20 @@ trait ProviderController {
         ];
     }
 
+    protected function findProvider($providerId)
+    {
+        return Provider::find($providerId);
+    }
+
     protected function saveNewProvider()
     {
-        $this->validate([
-            'companyName' => 'required',
-        ]);
-
-        Provider::Create(
-            [
-                'town'                  => $this->provider['town'],
-                'seller'                => $this->provider['seller'],
-                'address'               => $this->provider['address'],
-                'cellphone'             => $this->provider['cellphone'],
-                'rucNumber'             => $this->provider['rucNumber'],
-                'companyName'           => $this->provider['companyName'],
-                'lineBussiness'         => $this->provider['lineBussiness'],
-                'dgiRegistration'       => $this->provider['dgiRegistration'],
-                'conventionalTelephone' => $this->provider['conventionalTelephone']
-            ]);
-
+        Provider::Create($this->provider);
         $this->resetFilters();
     }
 
-    protected function updateProvider($providerId)
-    {
-        $provider = Provider::findorFail($providerId);
-         
-        $provider->town                     = $this->provider['town'];
-        $provider->seller                   = $this->provider['seller'];
-        $provider->address                  = $this->provider['address'];
-        $provider->cellphone                = $this->provider['cellphone'];
-        $provider->rucNumber                = $this->provider['rucNumber'];
-        $provider->companyName              = $this->provider['companyName'];
-        $provider->lineBussiness            = $this->provider['lineBussiness'];
-        $provider->dgiRegistration          = $this->provider['dgiRegistration'];
-        $provider->conventionalTelephone    = $this->provider['conventionalTelephone'];
-         
-        $provider->save();
+    protected function updateProvider()
+    {    
+        $this->provider->save();
+        $this->resetFilters();
     }
 }

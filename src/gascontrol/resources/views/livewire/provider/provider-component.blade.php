@@ -23,13 +23,13 @@
                         @error('companyName') <span class="text-red-600">{{ $message }}</span> @enderror
                     </div>
                     <div class="w-full flex-1 mx-2">
-                        <x-jet-input wire:model.defer="provider.provider.seller" wire:loading.class="opacity-25" placeholder="Vendedor" class="flex text-ellipsis my-2 p-2 px-2 uppercase appearance-none outline-none w-full text-gray-800"></x-jet-input>
+                        <x-jet-input wire:model.defer="provider.seller" wire:loading.class="opacity-25" placeholder="Vendedor" class="flex text-ellipsis my-2 p-2 px-2 uppercase appearance-none outline-none w-full text-gray-800"></x-jet-input>
                     </div>
                     <div class="w-full flex-1 mx-2">
-                        <x-jet-input wire:model.defer="provider.provider.address" wire:loading.class="opacity-25" placeholder="Dirección" class="flex text-ellipsis my-2 p-2 px-2 uppercase appearance-none outline-none w-full text-gray-800"></x-jet-input>
+                        <x-jet-input wire:model.defer="provider.address" wire:loading.class="opacity-25" placeholder="Dirección" class="flex text-ellipsis my-2 p-2 px-2 uppercase appearance-none outline-none w-full text-gray-800"></x-jet-input>
                     </div>
                     <div class="w-full flex-1 mx-2">
-                        <x-jet-input wire:model.defer="provider.provider.town" wire:loading.class="opacity-25" placeholder="Ciudad" class="flex text-ellipsis my-2 p-2 px-2 uppercase appearance-none outline-none w-full text-gray-800"></x-jet-input>
+                        <x-jet-input wire:model.defer="provider.town" wire:loading.class="opacity-25" placeholder="Ciudad" class="flex text-ellipsis my-2 p-2 px-2 uppercase appearance-none outline-none w-full text-gray-800"></x-jet-input>
                     </div>
                 </div>
             </div>
@@ -71,15 +71,15 @@
                     text-teal-700
                     border duration-200 ease-in-out
                     border-teal-600 transition">
-                    <span wire:loading.remove>Guardar</span>
+                    <span>Guardar</span>
                 </x-jet-button>
-                <x-jet-button x-show="editMode" wire:click="saveModelObject" wire:loading.class="animate-pulse" class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
+                <x-jet-button x-show="editMode" wire:click="updateModelObjectById(null)" wire:loading.class="animate-pulse" class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
                     hover:bg-teal-700 hover:text-teal-100
                     bg-teal-100
                     text-teal-700
                     border duration-200 ease-in-out
                     border-teal-600 transition">
-                    <span wire:loading.remove>Actualizar</span>
+                    <span>Actualizar</span>
                 </x-jet-button>
                 <br>
                 <x-jet-button @click="showForm = false, editMode = false" wire:click="resetFilters" class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
@@ -133,7 +133,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->dgiRegistration }} </td>
                                     <td class="px-6 py-4 whitespace-nowrap"> {{ $provider->lineBussiness }} </td>
                                     <td>
-                                        <x-jet-button wire:click="updateModelObjectById({{ $provider->id }})" @click="editMode = true, showForm = true" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
+                                        <x-jet-button wire:click="setProvider({{ $provider->id }})" @click="editMode = true, showForm = true" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-900 transition duration-300 ease">
                                             Editar</x-jet-button><br>
                                         <x-jet-button wire:click="deleteModelObjectById({{ $provider->id }})" class="px-2 mb-2 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-red-900 transition duration-300 ease">
                                             Eliminar</x-jet-button>

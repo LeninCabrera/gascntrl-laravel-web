@@ -24,7 +24,7 @@ class ProviderComponent extends Component implements ComponentContractInterface
  
      public function updateModelObjectById($objectId)
      {
-         $this->updateProvider($objectId);
+         $this->updateProvider();
      }
  
      public function deleteModelObjectById($objectId)
