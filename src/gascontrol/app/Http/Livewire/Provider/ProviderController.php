@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Provider;
 
 use App\Models\Provider;
+use App\Http\Enums\StateMessage;
 
 trait ProviderController {
     // Public Properties
@@ -13,8 +14,8 @@ trait ProviderController {
 
     public function resetFilters()
     {
-        if (!empty($provider)) {
-            $this->provider = null;
+        if ($this->provider) {
+            $this->reset('provider');
         }
     }
 
@@ -22,6 +23,7 @@ trait ProviderController {
     {
         $providerSelected = $this->findProvider($providerId);
         
+        $this->provider['id']                       = $providerSelected->id;
         $this->provider['town']                     = $providerSelected->town;
         $this->provider['seller']                   = $providerSelected->seller;
         $this->provider['address']                  = $providerSelected->address;
@@ -51,11 +53,24 @@ trait ProviderController {
     {
         Provider::Create($this->provider);
         $this->resetFilters();
+        StateMessage::sessionFlash(StateMessage::Success, 'GUARDADO CON EXITO!');
     }
 
     protected function updateProvider()
-    {    
-        $this->provider->save();
+    {
+        $providerId = $this->provider["id"];
+        $providerSelected = $this->findProvider($providerId);
+        $providerSelected->town                     = $this->provider['town'];  
+        $providerSelected->seller                   = $this->provider['seller']; 
+        $providerSelected->address                  = $this->provider['address']; 
+        $providerSelected->cellphone                = $this->provider['cellphone']; 
+        $providerSelected->rucNumber                = $this->provider['rucNumber']; 
+        $providerSelected->companyName              = $this->provider['companyName']; 
+        $providerSelected->lineBussiness            = $this->provider['lineBussiness']; 
+        $providerSelected->dgiRegistration          = $this->provider['dgiRegistration']; 
+        $providerSelected->conventionalTelephone    = $this->provider['conventionalTelephone']; 
+        $providerSelected->save();
         $this->resetFilters();
+        StateMessage::sessionFlash(StateMessage::Success, 'ACTUALIZADO CON EXITO!');
     }
 }
