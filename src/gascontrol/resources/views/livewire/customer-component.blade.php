@@ -59,7 +59,6 @@
                         border duration-200 ease-in-out
                         border-teal-600 transition">
                     <span wire:loading.remove>Guardar</span>
-                    <span wire:loading.class.remove="hidden" class="hidden">Guardando...</span>
                 </x-jet-button>
                 <br>
                 <x-jet-button @click="showForm = false" wire:click="resetFilters" class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer
