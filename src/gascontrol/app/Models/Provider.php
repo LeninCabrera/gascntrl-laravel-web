@@ -2,15 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Enums\ProviderFields;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Provider extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'companyName', 'seller', 'address', 'town', 'conventionalTelephone',
-        'cellphone', 'rucNumber', 'dgiRegistration', 'lineBussiness'
+        ProviderFields::Town,
+        ProviderFields::Seller,
+        ProviderFields::Address,
+        ProviderFields::RucNumber,
+        ProviderFields::Cellphone,
+        ProviderFields::CompanyName,
+        ProviderFields::LineBussiness,
+        ProviderFields::DgiRegistration,
+        ProviderFields::ConventionalTelephone
     ];
 }

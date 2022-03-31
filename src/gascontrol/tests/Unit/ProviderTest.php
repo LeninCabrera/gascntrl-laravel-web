@@ -5,9 +5,22 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Livewire\Livewire;
 use App\Models\Provider;
+use Tests\TestContractInterface;
+use App\Models\Enums\ProviderFields;
 use App\Http\Livewire\Provider\ProviderComponent;
 
-class ProviderTest extends TestCase
+interface ProviderInterface extends TestContractInterface {
+    const MODEL = 'provider';
+}
+
+enum ProviderConstants {
+    const COMPANY_NAME = 'foo';
+    const RESET_FILTERS_FUNCTION = 'resetFilters';
+    const SAVE_MODEL_FUNCTION = 'saveModelObject';
+    const PROVIDER_MOCK = [ ProviderFields::CompanyName => self::COMPANY_NAME ];
+}
+
+class ProviderTest extends TestCase implements ProviderInterface
 {
     /**
      * 
@@ -18,11 +31,13 @@ class ProviderTest extends TestCase
     public function test_companyName_is_required()
     {
         Livewire::test(ProviderComponent::class)
-            ->set('provider', [
-                'companyName' => null,
+            ->set(self::MODEL, [
+                ProviderFields::CompanyName => null,
             ])
-            ->call('saveModelObject')
-            ->assertHasErrors(['provider.companyName' => 'required']);
+            ->call(ProviderConstants::SAVE_MODEL_FUNCTION)
+            ->assertHasErrors(
+                [self::MODEL.'.'.ProviderFields::CompanyName => 'required']
+            );
     }
 
     /**
@@ -34,10 +49,12 @@ class ProviderTest extends TestCase
     public function test_provider_saved_exists()
     {
         Livewire::test(ProviderComponent::class)
-            ->set('provider', ['companyName' => 'testName'])
-            ->call('saveModelObject');
+            ->set(self::MODEL, ProviderConstants::PROVIDER_MOCK)
+            ->call(ProviderConstants::SAVE_MODEL_FUNCTION);
         
-        $this->assertTrue(Provider::where('companyName', 'testName')->exists());
+        $this->assertTrue(
+            Provider::where(ProviderFields::CompanyName, ProviderConstants::COMPANY_NAME)->exists()
+        );
     }
 
     /**
@@ -47,24 +64,20 @@ class ProviderTest extends TestCase
      */
     public function test_provider_set_and_clear()
     {
-        $providerMock = [
-            'companyName' => 'testName'
-        ];
+        $livewireProviderComponent = Livewire::test(ProviderComponent::class);
 
-        $providerComponentTest = Livewire::test(ProviderComponent::class);
-
-        $provider = $providerComponentTest
-            ->set('provider', ['companyName' => 'testName'])
-            ->assertSet('provider.companyName', 'testName')
-            ->get('provider');
+        $provider = $livewireProviderComponent
+            ->set(self::MODEL, ProviderConstants::PROVIDER_MOCK)
+            ->assertSet(self::MODEL.'.'.ProviderFields::CompanyName, ProviderConstants::COMPANY_NAME)
+            ->get(self::MODEL);
         
         $this->assertNotNull($provider);
-        $this->assertEquals($providerMock, $provider);
+        $this->assertEquals(ProviderConstants::PROVIDER_MOCK, $provider);
 
-        $providerExcpectNull = $providerComponentTest
-            ->call('resetFilters')
-            ->get('provider');
+        $providerExcpectNull = $livewireProviderComponent
+            ->call(ProviderConstants::RESET_FILTERS_FUNCTION)
+            ->get(self::MODEL);
         
-        $this->assertNull($providerExcpectNull, 'The clear method no working!');
+        $this->assertNull($providerExcpectNull);
     }
 }
