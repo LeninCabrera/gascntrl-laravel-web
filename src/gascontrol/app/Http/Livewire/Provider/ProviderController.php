@@ -9,6 +9,10 @@ trait ProviderController {
     // Public Properties
     public $provider;
 
+    // Protected Properties
+    protected $rules = [
+        'provider.companyName' => 'required',
+    ];
 
     // Public functions
 
