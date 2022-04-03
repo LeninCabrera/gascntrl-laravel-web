@@ -8,38 +8,62 @@ on:
 
 jobs:
   laravel-tests:
+    # local run
+    runs-on: self-hosted
 
-    runs-on: ubuntu-latest
+    # service run
+    #runs-on: ubuntu-latest
 
     steps:
-    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
-      with:
-        php-version: '8.1.2'
+    # In WINDOWS with self-hosted we doesn't need actions for php
+    # - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+    #  with:
+    #    php-version: '8.1.2'
+
+    # Checkout to branch in the repository
     - uses: actions/checkout@v3
+
+    # ENV
+    # In WINDOWS: we need set permissions for self-hosted
+    # Get-ExecutionPolicy -List ​
+    # Set-ExecutionPolicy RemoteSigned -Scope CurrentUser ​
     - name: Copy .env
       run: |
         cd src/gascontrol/
         php -r "file_exists('.env') || copy('.env.example', '.env');"
+    
+    # Composer dependencies
     - name: Install Dependencies
       run: |
         cd src/gascontrol/
         composer install
+    # KEY
     - name: Generate key
       run: |
         cd src/gascontrol/
         php artisan key:generate
-    - name: Directory Permissions
+
+    # Run Migrations
+    - name: Run Migrations
+      env:
+        DB_CONNECTION: mysql
+        DB_DATABASE: githubactions
       run: |
         cd src/gascontrol/
-        chmod -R 777 storage bootstrap/cache
-    
-    #- name: Create Database
+        php artisan migrate
+
+    # Unit Test and Feature Test
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      env:
+          DB_CONNECTION: mysql
+          DB_DATABASE: githubactions
+      run: |
+        cd src/gascontrol/
+        vendor/bin/phpunit
+
+    # Directory permissions for linux or mac:
+    #- name: Directory Permissions
     #  run: |
-    #    mkdir -p database
-    #    touch database/database.sqlite
-    #- name: Execute tests (Unit and Feature tests) via PHPUnit
-    #  env:
-    #    DB_CONNECTION: sqlite
-    #    DB_DATABASE: database/database.sqlite
-    #  run: vendor/bin/phpunit
-    #
+    #   cd src/gascontrol/
+    #   chmod -R 777 storage bootstrap/cache
+    
