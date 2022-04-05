@@ -1,0 +1,63 @@
+name: Laravel
+
+on:
+  push:
+    branches: [ feature/github-actions-implementation ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  laravel-tests:
+    # local run
+    runs-on: self-hosted
+
+    # service run
+    #runs-on: ubuntu-latest
+
+    steps:
+    # In WINDOWS with self-hosted we doesn't need actions for php
+    # - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+    #  with:
+    #    php-version: '8.1.2'
+
+    # Checkout to branch in the repository
+    - uses: actions/checkout@v3
+
+    # ENV
+    # In WINDOWS: we need set permissions for self-hosted
+    # Get-ExecutionPolicy -List ​
+    # Set-ExecutionPolicy RemoteSigned -Scope CurrentUser ​
+    - name: Copy .env for testing
+      run: |
+        cd src/gascontrol/
+        php -r "file_exists('.env.testing') || copy('.env.testing.example', '.env.testing');"
+
+    # Validate composer file
+    - name: Validate composer.json and composer.lock
+      run: |
+        cd src/gascontrol/
+        composer validate --strict
+
+    # Install composer dependencies
+    - name: Install Dependencies
+      run: |
+        cd src/gascontrol/
+        composer install
+
+    # Generate APP_KEY
+    - name: Generate key
+      run: |
+        cd src/gascontrol/
+        php artisan key:generate --env=testing
+
+    # Run Migrations
+    - name: Run Migrations
+      run: |
+        cd src/gascontrol/
+        php artisan migrate --env=testing
+
+    # Unit Test and Feature Test
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      run: |
+        cd src/gascontrol/
+        php artisan test --no-interaction --env=testing --stop-on-failure
