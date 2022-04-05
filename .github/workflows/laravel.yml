@@ -47,7 +47,10 @@ jobs:
     - name: Run Migrations
       env:
         DB_CONNECTION: mysql
-        DB_DATABASE: githubactions
+        DB_HOST: b9mrufjbdcpd0unu05nw-mysql.services.clever-cloud.com
+        DB_DATABASE: b9mrufjbdcpd0unu05nw
+        DB_USERNAME: u0h75mwxovo7bd7n
+        DB_PASSWORD: dhXKCgAak1BSZWQGZQF2
       run: |
         cd src/gascontrol/
         php artisan migrate
@@ -55,8 +58,11 @@ jobs:
     # Unit Test and Feature Test
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
-          DB_CONNECTION: mysql
-          DB_DATABASE: githubactions
+        DB_CONNECTION: mysql
+        DB_HOST: b9mrufjbdcpd0unu05nw-mysql.services.clever-cloud.com
+        DB_DATABASE: b9mrufjbdcpd0unu05nw
+        DB_USERNAME: u0h75mwxovo7bd7n
+        DB_PASSWORD: dhXKCgAak1BSZWQGZQF2
       run: |
         cd src/gascontrol/
         vendor/bin/phpunit
