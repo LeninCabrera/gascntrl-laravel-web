@@ -3,8 +3,8 @@ name: Laravel
 on:
   push:
     branches: [ feature/github-actions-implementation ]
-  #pull_request:
-  #  branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
 
 jobs:
   laravel-tests:
@@ -27,49 +27,37 @@ jobs:
     # In WINDOWS: we need set permissions for self-hosted
     # Get-ExecutionPolicy -List ​
     # Set-ExecutionPolicy RemoteSigned -Scope CurrentUser ​
-    - name: Copy .env
+    - name: Copy .env for testing
       run: |
         cd src/gascontrol/
-        php -r "file_exists('.env') || copy('.env.example', '.env');"
-    
-    # Composer dependencies
+        php -r "file_exists('.env.testing') || copy('.env.testing.example', '.env.testing');"
+
+    # Validate composer file
+    - name: Validate composer.json and composer.lock
+      run: |
+        cd src/gascontrol/
+        composer validate --strict
+
+    # Install composer dependencies
     - name: Install Dependencies
       run: |
         cd src/gascontrol/
         composer install
-    # KEY
+
+    # Generate APP_KEY
     - name: Generate key
       run: |
         cd src/gascontrol/
-        php artisan key:generate
+        php artisan key:generate --env=testing
 
     # Run Migrations
     - name: Run Migrations
-      env:
-        DB_CONNECTION: mysql
-        DB_HOST: b9mrufjbdcpd0unu05nw-mysql.services.clever-cloud.com
-        DB_DATABASE: b9mrufjbdcpd0unu05nw
-        DB_USERNAME: u0h75mwxovo7bd7n
-        DB_PASSWORD: dhXKCgAak1BSZWQGZQF2
       run: |
         cd src/gascontrol/
-        php artisan migrate
+        php artisan migrate --env=testing
 
     # Unit Test and Feature Test
     - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: mysql
-        DB_HOST: b9mrufjbdcpd0unu05nw-mysql.services.clever-cloud.com
-        DB_DATABASE: b9mrufjbdcpd0unu05nw
-        DB_USERNAME: u0h75mwxovo7bd7n
-        DB_PASSWORD: dhXKCgAak1BSZWQGZQF2
       run: |
         cd src/gascontrol/
-        vendor/bin/phpunit
-
-    # Directory permissions for linux or mac:
-    #- name: Directory Permissions
-    #  run: |
-    #   cd src/gascontrol/
-    #   chmod -R 777 storage bootstrap/cache
-    
+        php artisan test --no-interaction --env=testing --stop-on-failure
