@@ -8,6 +8,8 @@ use App\Models\Provider;
 use Tests\TestContractInterface;
 use App\Models\Enums\ProviderFields;
 use App\Http\Livewire\Provider\ProviderComponent;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 interface ProviderInterface extends TestContractInterface {
     const MODEL = 'provider';
@@ -22,6 +24,9 @@ enum ProviderConstants {
 
 class ProviderTest extends TestCase implements ProviderInterface
 {
+    // Resetting The Database After Each Test
+    use RefreshDatabase;
+
     /**
      * 
      * Test: companyName_is_required
