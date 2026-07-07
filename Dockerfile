@@ -50,5 +50,7 @@ RUN chown -R www-data:www-data /var/www/html \
 
 EXPOSE 80
 
+RUN php artisan config:clear || true
+
 # Iniciar Apache
 CMD ["sh", "-c", "apache2-foreground"]
