@@ -26,9 +26,20 @@ COPY src/gascontrol/ .
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-RUN chown -R www-data:www-data storage bootstrap/cache
+RUN mkdir -p \
+    storage/logs \
+    storage/framework/cache \
+    storage/framework/sessions \
+    storage/framework/views \
+    bootstrap/cache
 
-RUN chmod -R 775 storage bootstrap/cache
+RUN chown -R www-data:www-data \
+    /var/www/html/storage \
+    /var/www/html/bootstrap/cache
+
+RUN chmod -R 775 \
+    /var/www/html/storage \
+    /var/www/html/bootstrap/cache
 
 RUN sed -i 's/Listen 80/Listen 9000/' /etc/apache2/ports.conf
 
