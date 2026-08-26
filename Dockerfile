@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.1-apache
 
 RUN apt-get update && apt-get install -y \
     git \
@@ -18,13 +18,13 @@ RUN docker-php-ext-install \
 
 RUN a2enmod rewrite
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
 COPY src/gascontrol/ .
 
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 RUN chown -R www-data:www-data storage bootstrap/cache
 
